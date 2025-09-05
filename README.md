@@ -21,9 +21,5 @@ Keep Hackintosh alive after macOS "Tahoe" by:
 ## 🌍 Domain
 This project is live at: [sm1ac.is-a.dev](https://sm1ac.is-a.dev) (pending approval).  
 
-## 🤝 Credits
-- Inspired by the Hackintosh community and creators like TECHNolli  
-- Maintained by community members (Discord: `coder wut?? -v`)  
-
 ---
-💡 *This is purely an educational & research project. We do not provide macOS builds, ISOs, or any Apple proprietary code.*  
+💡 *This is purely an educational & research project. We **DO NOT** provide macOS builds, ISOs, or any Apple proprietary code.* *PLEASE DONT KILL US APPLE* 
