@@ -1,93 +1,175 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>SM1AC - Spoof M1 Apple Chips</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>SM1AC</title>
   <style>
-    body {
-      margin: 0;
-      height: 100vh;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-      background: linear-gradient(135deg, #1e3c72, #2a5298);
-      color: #fff;
-      text-align: center;
+    :root{
+      --bg-gradient-light: linear-gradient(135deg,#74ebd5,#ACB6E5);
+      --bg-gradient-dark: linear-gradient(135deg,#0f2027,#203a43,#2c5364);
+
+      --card-bg-light: rgba(255,255,255,0.15);
+      --card-bg-dark: rgba(0,0,0,0.45);
+
+      --text-light: #111;
+      --text-dark: #e6edf3;
+
+      --border-light: rgba(0,0,0,0.15);
+      --border-dark: rgba(255,255,255,0.08);
     }
 
-    h1 {
-      font-size: 3rem;
-      margin-bottom: 0.5rem;
+    /* base */
+    html,body{height:100%;margin:0;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;}
+    body{
+      display:flex;
+      flex-direction:column;
+      min-height:100vh;
+      transition:background .35s ease,color .25s ease;
+      background:var(--bg-gradient-light);
+      color:var(--text-light);
+    }
+    body.dark{
+      background:var(--bg-gradient-dark);
+      color:var(--text-dark);
     }
 
-    p {
-      font-size: 1.2rem;
-      opacity: 0.9;
+    /* navbar */
+    nav{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      padding:12px 20px;
+      background:var(--card-bg-light);
+      backdrop-filter:blur(10px);
+      border-bottom:1px solid var(--border-light);
+      transition:background .25s ease,border-color .25s ease;
+    }
+    body.dark nav{
+      background:var(--card-bg-dark);
+      border-color:var(--border-dark);
+    }
+    nav .brand{font-weight:700;font-size:1.1rem}
+    nav .controls{display:flex;gap:12px;align-items:center}
+    nav a{color:inherit;text-decoration:none;font-weight:600;opacity:.95}
+    .btn-toggle{
+      appearance:none;
+      border:1px solid currentColor;
+      background:transparent;
+      color:inherit;
+      padding:6px 10px;
+      border-radius:10px;
+      cursor:pointer;
+      font-weight:600;
     }
 
-    ul {
-      text-align: left;
-      max-width: 500px;
-      margin: 1rem auto;
-      padding: 0;
-      list-style: none;
+    /* main card */
+    main{flex:1;display:flex;align-items:center;justify-content:center;padding:32px}
+    .card{
+      width:min(880px,96%);
+      max-width:720px;
+      border-radius:14px;
+      padding:26px 28px;
+      text-align:center;
+      background:var(--card-bg-light);
+      backdrop-filter:blur(14px);
+      border:1px solid var(--border-light);
+      transition:background .3s ease,border-color .3s ease;
+    }
+    body.dark .card{
+      background:var(--card-bg-dark);
+      border-color:var(--border-dark);
+    }
+    .card h1{margin:0 0 10px;font-size:1.6rem}
+    .card p{margin:0 0 14px;line-height:1.45}
+    .card ol{text-align:left;max-width:560px;margin:0 auto;padding-left:20px}
+
+    footer{
+      padding:12px 18px;
+      text-align:center;
+      background:var(--card-bg-light);
+      border-top:1px solid var(--border-light);
+      backdrop-filter:blur(8px);
+      transition:background .25s ease,border-color .25s ease;
+    }
+    body.dark footer{
+      background:var(--card-bg-dark);
+      border-color:var(--border-dark);
     }
 
-    ul li {
-      margin: 0.5rem 0;
-      background: rgba(255, 255, 255, 0.15);
-      padding: 0.8rem 1rem;
-      border-radius: 10px;
-    }
-
-    .box {
-      background: rgba(255, 255, 255, 0.1);
-      padding: 2rem 3rem;
-      border-radius: 20px;
-      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
-      backdrop-filter: blur(10px);
-      max-width: 700px;
-    }
-
-    a {
-      color: #ffd369;
-      text-decoration: none;
-      font-weight: bold;
-    }
-
-    a:hover {
-      text-decoration: underline;
-    }
+    /* accessibility: focus styles */
+    .btn-toggle:focus{outline:2px solid rgba(255,255,255,0.12);outline-offset:2px}
   </style>
 </head>
 <body>
-  <div>
-    <h1>🚀 SM1AC</h1>
-    <p><strong>Spoof M1 Apple Chips</strong> – an experimental community project exploring virtualization and Apple Silicon spoofing.</p>
-    <p>Status: <em>Work in Progress</em></p>
-  
-    <h2>What We’re Doing</h2>
-    <p>Keeping Hackintosh alive by experimenting with:</p>
-    <ul>
-      <li>QEMU/KVM for ARM64 emulation</li>
-      <li>CPUID & device-tree spoofing</li>
-      <li>Shims/layers to mimic Apple hardware</li>
-      <li>Documenting results & limitations</li>
-    </ul>
-  
-    <h2>Get Involved</h2>
-    <ul>
-      <li>Join our Discord: <a href="https://discord.gg/qawDTR6Wg2" target="_blank">LinuxIsBetter</a></li>
-      <li>Check issues & tasks on <a href="https://github.com/viragsimplecoder0008/sm1ac" target="_blank">GitHub</a></li>
-      <li>Contribute QEMU configs, patches, or docs</li>
-    </ul>
-    <div>
-  <p><strong>Website:</strong> <a href="https://viragsimplecoder0008.github.io/sm1ac" target="_blank">viragsimplecoder0008.github.io/sm1ac</a></p>
+  <nav aria-label="Top navigation">
+    <div class="brand">SM1AC</div>
+    <div class="controls">
+      <a href="#about">About</a>
+      <a href="#steps">Get Started</a>
+      <a href="#contribute">Contribute</a>
+      <button id="themeToggle" class="btn-toggle" type="button">Toggle theme</button>
+    </div>
+  </nav>
 
-  <p style="margin-top:1.5rem;font-size:0.9rem;opacity:0.7;">
-    *This is a research/educational project. We do not provide macOS builds, ISOs, or Apple proprietary code.*
-  </p>
+  <main>
+    <div class="card" role="main">
+      <h1>Welcome to SM1AC</h1>
+      <p>SM1AC is an open-source research project focusing on QEMU-based virtualization and device-model experiments for Apple Silicon-era systems.</p>
+
+      <h2 id="steps">Steps to get started</h2>
+      <ol>
+        <li>Fork the repository on GitHub.</li>
+        <li>Clone it to your local machine and read the README.</li>
+        <li>Run the base QEMU boot script (Linux ARM64) and report results.</li>
+        <li>Open issues or submit pull requests with reproducible changes.</li>
+      </ol>
+    </div>
+  </main>
+
+  <footer id="contribute">
+    SM1AC Project — Open Source & Community Driven
+  </footer>
+
+  <script>
+    // Attach behavior after DOM loads. This avoids inline onclick errors.
+    document.addEventListener('DOMContentLoaded', function () {
+      const btn = document.getElementById('themeToggle');
+      if (!btn) {
+        console.error('theme toggle button not found');
+        return;
+      }
+
+      // Apply saved theme (default to dark for less eye strain)
+      try {
+        const saved = localStorage.getItem('sm1ac-theme');
+        const defaultTheme = saved || 'dark';
+        setTheme(defaultTheme);
+      } catch (e) {
+        console.warn('localStorage not available:', e);
+        // still proceed using default
+        setTheme('dark');
+      }
+
+      // Attach listener reliably
+      btn.addEventListener('click', function () {
+        const isDark = document.body.classList.toggle('dark');
+        // store preference
+        try { localStorage.setItem('sm1ac-theme', isDark ? 'dark' : 'light'); } catch (e) {}
+        btn.textContent = isDark ? 'Switch to light' : 'Switch to dark';
+      });
+
+      // helper
+      function setTheme(mode) {
+        if (mode === 'dark') {
+          document.body.classList.add('dark');
+          btn.textContent = 'Switch to light';
+        } else {
+          document.body.classList.remove('dark');
+          btn.textContent = 'Switch to dark';
+        }
+      }
+    });
+  </script>
 </body>
 </html>
